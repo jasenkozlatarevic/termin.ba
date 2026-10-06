@@ -1,0 +1,18 @@
+# Logs
+backend/logs/*
+!backend/logs/.gitkeep
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies
+vendor/
+
+# IDE
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
