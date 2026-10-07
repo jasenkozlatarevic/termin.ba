@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Book a Time Slot | Termin.ba</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="container navbar-content">
+
+        <a href="../index.html" class="logo">
+            Termin<span>.ba</span>
+        </a>
+
+<nav class="nav-links">
+    <a href="../index.html">Home</a>
+    <a href="venues.html">Venues</a>
+    <a href="games.html">Join a Game</a>
+    <a href="profile.html">Profile</a>
+    <a href="../index.html#about">About</a>
+</nav>
+
+        <div class="nav-actions">
+            <a href="login.html" class="btn btn-outline">Log In</a>
+            <a href="register.html" class="btn btn-primary">Register</a>
+        </div>
+
+    </div>
+</header>
+
+<main>
+
+    <section class="section">
+
+        <div class="container">
+
+            <a href="venue-details.html" class="back-link">
+                ← Back to venue
+            </a>
+
+            <div class="section-header">
+                <span class="section-label">BOOK • PLAY • ENJOY</span>
+
+                <h1>Book a time slot.</h1>
+
+                <p>
+                    Select your preferred date and time for your football game.
+                </p>
+            </div>
+
+            <div class="reservations-card">
+
+                <div class="reservations-venue">
+
+                    <span class="venue-type">Football</span>
+
+                    <h2>Olympic Sports Center</h2>
+
+                    <p>Sarajevo • Koševo</p>
+
+                    <strong>30 KM / hour</strong>
+
+                </div>
+
+                <form class="reservations-form">
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="reservation-date">
+                                Date
+                            </label>
+
+                            <input
+                                type="date"
+                                id="reservation-date"
+                                name="reservation-date"
+                            >
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="reservation-time">
+                                Time
+                            </label>
+
+                            <select
+                                id="reservation-time"
+                                name="reservation-time"
+                            >
+                                <option value="">
+                                    Select a time
+                                </option>
+
+                                <option>18:00 - 19:00</option>
+                                <option>19:00 - 20:00</option>
+                                <option>20:00 - 21:00</option>
+                                <option>21:00 - 22:00</option>
+                                <option>22:00 - 23:00</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="players">
+                            Number of players
+                        </label>
+
+                        <select id="players" name="players">
+
+                            <option value="">
+                                Select number of players
+                            </option>
+
+                            <option>6 players</option>
+                            <option>8 players</option>
+                            <option>10 players</option>
+                            <option>12 players</option>
+                            <option>14 players</option>
+                            <option>16 players</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="notes">
+                            Additional notes
+                        </label>
+
+                        <textarea
+                            id="notes"
+                            name="notes"
+                            rows="4"
+                            placeholder="Add any additional information..."
+                        ></textarea>
+
+                    </div>
+
+                    <div class="reservations-summary">
+
+                        <div>
+                            <span>Venue</span>
+                            <strong>Olympic Sports Center</strong>
+                        </div>
+
+                        <div>
+                            <span>Price</span>
+                            <strong>30 KM / hour</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="form-actions">
+
+                        <a
+                            href="venue-details.html"
+                            class="btn btn-outline"
+                        >
+                            Cancel
+                        </a>
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                        >
+                            Confirm Reservation
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="footer">
+
+    <div class="container">
+
+        <p>
+            © 2026 Termin.ba – Find a field. Find your game.
+        </p>
+
+    </div>
+
+</footer>
+
+</body>
+
+</html>
