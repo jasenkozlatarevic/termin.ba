@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create a Game | Termin.ba</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="container navbar-content">
+
+        <a href="../index.html" class="logo">
+            Termin<span>.ba</span>
+        </a>
+
+<nav class="nav-links">
+    <a href="../index.html">Home</a>
+    <a href="venues.html">Venues</a>
+    <a href="games.html">Join a Game</a>
+    <a href="profile.html">Profile</a>
+    <a href="../index.html#about">About</a>
+</nav>
+
+        <div class="nav-actions">
+            <a href="login.html" class="btn btn-outline">Log In</a>
+            <a href="register.html" class="btn btn-primary">Register</a>
+        </div>
+
+    </div>
+</header>
+
+
+<main>
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="section-header">
+                <span class="section-label">PLAY • ORGANIZE • CONNECT</span>
+
+                <h1>Create a game.</h1>
+
+                <p>
+                    Organize your next football game and find players
+                    to join you.
+                </p>
+            </div>
+
+
+            <div class="create-game-card">
+
+                <form class="game-form">
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label for="game-name">
+                                Game name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="game-name"
+                                name="game-name"
+                                placeholder="e.g. Friday Night Football"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="venue">
+                                Venue
+                            </label>
+
+                            <select id="venue" name="venue">
+                                <option value="">
+                                    Select a venue
+                                </option>
+
+                                <option>
+                                    Olympic Sports Center
+                                </option>
+
+                                <option>
+                                    Sport Arena Sarajevo
+                                </option>
+
+                                <option>
+                                    Skenderija Sports Hall
+                                </option>
+                            </select>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label for="date">
+                                Date
+                            </label>
+
+                            <input
+                                type="date"
+                                id="date"
+                                name="date"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="time">
+                                Time
+                            </label>
+
+                            <input
+                                type="time"
+                                id="time"
+                                name="time"
+                            >
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label for="players">
+                                Number of players
+                            </label>
+
+                            <select id="players" name="players">
+
+                                <option value="">
+                                    Select number
+                                </option>
+
+                                <option>6 players</option>
+                                <option>8 players</option>
+                                <option>10 players</option>
+                                <option>12 players</option>
+                                <option>14 players</option>
+                                <option>16 players</option>
+
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="level">
+                                Skill level
+                            </label>
+
+                            <select id="level" name="level">
+
+                                <option value="">
+                                    Select level
+                                </option>
+
+                                <option>Beginner</option>
+                                <option>Intermediate</option>
+                                <option>Advanced</option>
+                                <option>Any level</option>
+
+                            </select>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="description">
+                            Description
+                        </label>
+
+                        <textarea
+                            id="description"
+                            name="description"
+                            rows="5"
+                            placeholder="Tell players something about the game..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="form-actions">
+
+                        <a href="games.html" class="btn btn-outline">
+                            Cancel
+                        </a>
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                        >
+                            Create Game
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="footer">
+
+    <div class="container">
+        <p>© 2026 Termin.ba – Find a field. Find your game.</p>
+    </div>
+
+</footer>
+
+</body>
+</html>
