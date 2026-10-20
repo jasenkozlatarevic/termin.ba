@@ -1,0 +1,97 @@
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-header">
+            <span class="section-label">ORGANIZE A MATCH</span>
+
+            <h2>Create a Game</h2>
+
+            <p>
+                Set up a football game and let other players
+                join your team.
+            </p>
+        </div>
+
+        <div class="venue-card">
+
+            <div class="venue-info">
+
+                <form id="create-game-form">
+
+                    <div class="form-group">
+                        <label for="game-venue">Football Venue</label>
+
+                        <select id="game-venue" name="venue" required>
+                            <option value="">Select a venue</option>
+                            <option value="FIS">FIS</option>
+                            <option value="Goran Čengić">Goran Čengić</option>
+                            <option value="Faris Pendek">Faris Pendek</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="game-date">Game Date</label>
+
+                        <input
+                            type="date"
+                            id="game-date"
+                            name="date"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="game-time">Game Time</label>
+
+                        <input
+                            type="time"
+                            id="game-time"
+                            name="time"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="game-players">Maximum Number of Players</label>
+
+                        <select id="game-players" name="players" required>
+                            <option value="10">10 players</option>
+                            <option value="12">12 players</option>
+                            <option value="14">14 players</option>
+                            <option value="16">16 players</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="game-description">Additional Information</label>
+
+                        <textarea
+                            id="game-description"
+                            name="description"
+                            rows="4"
+                            placeholder="Add any details about the game..."
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        Create Game
+                    </button>
+
+                </form>
+
+                <p id="create-game-message" aria-live="polite"></p>
+
+            </div>
+
+        </div>
+
+        <div class="hero-buttons">
+            <a href="#games" class="btn btn-outline">
+                Back to Games
+            </a>
+        </div>
+
+    </div>
+
+</section>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Termin.ba</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="container navbar-content">
+
+            <a href="#home" class="logo">
+                Termin<span>.ba</span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#venues">Venues</a>
+                <a href="#games">Join a Game</a>
+                <a href="#profile">Profile</a>
+                <a href="#about">About</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="#login" class="btn btn-outline">Log In</a>
+                <a href="#register" class="btn btn-primary">Register</a>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- SPA Content -->
+    <main id="spapp">
+
+        <section id="home" data-view="home"></section>
+
+        <section id="venues" data-view="venues"></section>
+
+        <section id="games" data-view="games"></section>
+
+        <section id="venue-details" data-view="venue-details"></section>
+
+        <section id="create-game" data-view="create-game"></section>
+
+        <section id="reservations" data-view="reservations"></section>
+
+        <section id="profile" data-view="profile"></section>
+
+        <section id="login" data-view="login"></section>
+
+        <section id="register" data-view="register"></section>
+
+        <section id="about" data-view="about"></section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>
+                © 2026 Termin.ba — Find a field. Find your game.
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+
+</body>
+</html>

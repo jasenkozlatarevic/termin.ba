@@ -1,0 +1,74 @@
+<section class="section">
+    <div class="container">
+
+        <div class="section-header">
+            <span class="section-label">YOUR BOOKINGS</span>
+            <h2>Venue Reservations</h2>
+            <p>
+                Book a football venue for your next match and keep track
+                of your reservations.
+            </p>
+        </div>
+
+        <div class="reservations-card">
+            <h3>Book a Venue</h3>
+
+            <form id="reservation-form">
+
+                <div class="form-group">
+                    <label for="reservation-venue">Select Venue</label>
+                    <select id="reservation-venue" name="venue" required>
+                        <option value="">Choose a venue</option>
+                        <option value="FIS">FIS</option>
+                        <option value="Goran Čengić">Goran Čengić</option>
+                        <option value="Faris Pendek">Faris Pendek</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="reservation-date">Reservation Date</label>
+                    <input
+                        type="date"
+                        id="reservation-date"
+                        name="date"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="reservation-time">Reservation Time</label>
+                    <input
+                        type="time"
+                        id="reservation-time"
+                        name="time"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    Request Reservation
+                </button>
+
+                <p id="reservation-message" aria-live="polite"></p>
+            </form>
+        </div>
+
+        <div class="section-header reservations-heading">
+            <h2>My Reservations</h2>
+            <p>
+                Your confirmed bookings will appear here once reservations
+                are connected to the backend.
+            </p>
+        </div>
+
+        <div class="empty-reservations">
+            <h3>⚽ No reservations yet</h3>
+            <p>You have no reservations to display.</p>
+        </div>
+
+        <div class="hero-buttons">
+            <a href="#venues" class="btn btn-outline">Browse Venues</a>
+        </div>
+
+    </div>
+</section>

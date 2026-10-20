@@ -1,0 +1,97 @@
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-header">
+            <span class="section-label">JOIN TERMIN.BA</span>
+
+            <h2>Create Your Account</h2>
+
+            <p>
+                Sign up to book football venues, create games
+                and connect with other players in Sarajevo.
+            </p>
+        </div>
+
+        <div class="venue-card">
+
+            <div class="venue-info">
+
+                <form id="register-form">
+
+                    <div class="form-group">
+                        <label for="register-name">Full Name</label>
+
+                        <input
+                            type="text"
+                            id="register-name"
+                            name="name"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="register-email">Email Address</label>
+
+                        <input
+                            type="email"
+                            id="register-email"
+                            name="email"
+                            placeholder="Enter your email"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="register-password">Password</label>
+
+                        <input
+                            type="password"
+                            id="register-password"
+                            name="password"
+                            placeholder="Create a password"
+                            autocomplete="new-password"
+                            minlength="8"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="register-confirm-password">
+                            Confirm Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="register-confirm-password"
+                            name="confirmPassword"
+                            placeholder="Confirm your password"
+                            autocomplete="new-password"
+                            minlength="8"
+                            required
+                        >
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        Create Account
+                    </button>
+
+                </form>
+
+                <p id="register-message" aria-live="polite"></p>
+
+                <p>
+                    Already have an account?
+                    <a href="#login">Log in here</a>
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
