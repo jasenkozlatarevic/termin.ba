@@ -1,86 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<section class="section">
 
-    <title>Login | Termin.ba</title>
+    <div class="container">
 
-    <link rel="stylesheet" href="../css/style.css">
-</head>
+        <div class="section-header">
+            <span class="section-label">WELCOME BACK</span>
 
-<body class="auth-page">
+            <h2>Log In to Termin.ba</h2>
 
-    <main class="auth-container">
+            <p>
+                Sign in to manage your reservations,
+                join football games and connect with players.
+            </p>
+        </div>
 
-        <div class="auth-card">
+        <div class="venue-card">
 
-            <a href="../index.html" class="auth-logo">
-                Termin<span>.ba</span>
-            </a>
+            <div class="venue-info">
 
-            <div class="auth-header">
-                <h1>Welcome back</h1>
+                <form id="login-form">
 
-                <p>
-                    Log in to manage your reservations and join games.
-                </p>
-            </div>
+                    <div class="form-group">
+                        <label for="login-email">Email Address</label>
 
-            <form class="auth-form">
-
-                <div class="form-group">
-                    <label for="email">Email address</label>
-
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="you@example.com"
-                        required
-                    >
-                </div>
-
-                <div class="form-group">
-                    <div class="form-label-row">
-                        <label for="password">Password</label>
-
-                        <a href="#" class="forgot-password">
-                            Forgot password?
-                        </a>
+                        <input
+                            type="email"
+                            id="login-email"
+                            name="email"
+                            placeholder="Enter your email"
+                            autocomplete="email"
+                            required
+                        >
                     </div>
 
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        placeholder="Enter your password"
-                        required
-                    >
-                </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
 
-                <button type="submit" class="btn btn-primary auth-button">
-                    Log In
-                </button>
+                        <input
+                            type="password"
+                            id="login-password"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+                    </div>
 
-            </form>
+                    <button type="submit" class="btn btn-primary">
+                        Log In
+                    </button>
 
-            <div class="auth-divider">
-                <span>OR</span>
+                </form>
+
+                <p id="login-message" aria-live="polite"></p>
+
+                <p>
+                    Don't have an account?
+                    <a href="#register">Register here</a>
+                </p>
+
             </div>
-
-            <p class="auth-register">
-                Don't have an account?
-                <a href="register.html">Create an account</a>
-            </p>
-
-            <a href="../index.html" class="back-home">
-                ← Back to Termin.ba
-            </a>
 
         </div>
 
-    </main>
+    </div>
 
-</body>
-</html>
+</section>

@@ -45,18 +45,16 @@ termin.ba/
 │   ├── middleware/
 │   ├── routes/
 │   └── services/
-│
+├── docs/
 ├── frontend/
 │   ├── css/
 │   ├── js/
 │   ├── static/
 │   └── views/
-│
-├── docs/
 ├── .gitignore
 ├── AGENTS.md
 └── README.md
-
+```
 
 ## Naming Conventions
 

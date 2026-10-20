@@ -1,7 +1,3 @@
-/* =========================
-   GENERAL
-========================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -20,8 +16,15 @@ body {
 }
 
 a {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
 }
 
 .container {
@@ -30,16 +33,21 @@ a {
     margin: 0 auto;
 }
 
+#spapp {
+    min-height: 60vh;
+}
 
-/* =========================
-   NAVBAR
-========================= */
+#spapp > section[hidden] {
+    display: none !important;
+}
+
+/* Navigation */
 
 .navbar {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: #ffffff;
+    background: #fff;
     border-bottom: 1px solid #e5e7eb;
 }
 
@@ -55,6 +63,7 @@ a {
     font-size: 28px;
     font-weight: 800;
     letter-spacing: -1px;
+    white-space: nowrap;
 }
 
 .logo span {
@@ -80,30 +89,30 @@ a {
 
 .nav-actions {
     display: flex;
+    align-items: center;
     gap: 10px;
 }
 
-
-/* =========================
-   BUTTONS
-========================= */
+/* Buttons */
 
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 11px 20px;
+    border: 1px solid transparent;
     border-radius: 8px;
     font-size: 14px;
     font-weight: 700;
-    border: 1px solid transparent;
+    text-align: center;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: background 0.2s ease, color 0.2s ease,
+                border-color 0.2s ease, transform 0.2s ease;
 }
 
 .btn-primary {
     background: #16a34a;
-    color: white;
+    color: #fff;
 }
 
 .btn-primary:hover {
@@ -112,7 +121,7 @@ a {
 }
 
 .btn-outline {
-    background: white;
+    background: #fff;
     color: #111827;
     border-color: #d1d5db;
 }
@@ -122,22 +131,18 @@ a {
     color: #16a34a;
 }
 
-
-/* =========================
-   HERO
-========================= */
+/* Hero */
 
 .hero {
     min-height: 620px;
     display: flex;
     align-items: center;
-    background:
-        linear-gradient(
-            120deg,
-            rgba(17, 24, 39, 0.96),
-            rgba(17, 24, 39, 0.80)
-        );
-    color: white;
+    background: linear-gradient(
+        120deg,
+        rgba(17, 24, 39, 0.96),
+        rgba(17, 24, 39, 0.80)
+    );
+    color: #fff;
 }
 
 .hero-content {
@@ -153,17 +158,17 @@ a {
 .section-label {
     display: inline-block;
     margin-bottom: 18px;
+    color: #16a34a;
     font-size: 13px;
     font-weight: 800;
     letter-spacing: 1.5px;
-    color: #22c55e;
 }
 
 .hero h1 {
+    margin-bottom: 28px;
     font-size: clamp(48px, 7vw, 82px);
     line-height: 0.98;
     letter-spacing: -4px;
-    margin-bottom: 28px;
 }
 
 .hero h1 span {
@@ -172,41 +177,44 @@ a {
 
 .hero p {
     max-width: 600px;
-    font-size: 19px;
-    color: #d1d5db;
     margin-bottom: 34px;
+    color: #d1d5db;
+    font-size: 19px;
 }
 
 .hero-buttons {
     display: flex;
+    flex-wrap: wrap;
     gap: 14px;
+    margin-top: 20px;
 }
 
-
-/* =========================
-   SECTIONS
-========================= */
+/* Sections */
 
 .section {
-    padding: 100px 0;
+    height: auto;
+    padding: 80px 0;
+    overflow: visible;
 }
 
 .section-dark {
     background: #111827;
-    color: white;
+    color: #fff;
 }
 
 .section-header {
     max-width: 650px;
-    margin-bottom: 45px;
+    height: auto;
+    margin-bottom: 40px;
+    overflow: visible;
 }
 
 .section-header h2,
 .about h2 {
+    margin-bottom: 15px;
     font-size: 42px;
     line-height: 1.1;
     letter-spacing: -1.5px;
-    margin-bottom: 15px;
 }
 
 .section-header p {
@@ -218,37 +226,37 @@ a {
     color: #9ca3af;
 }
 
-
-/* =========================
-   VENUES
-========================= */
+/* Venue Cards */
 
 .venue-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     align-items: stretch;
+    gap: 24px;
 }
 
 .venue-card {
-    display: grid;
-    grid-template-rows: 180px 1fr;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    min-height: 0;
     overflow: hidden;
-    background: white;
+    background: #fff;
     border: 1px solid #e5e7eb;
     border-radius: 14px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-
 .venue-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
 }
 
 .venue-image {
     height: 180px;
+    min-height: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -257,194 +265,456 @@ a {
 }
 
 .venue-info {
-    padding: 24px;
     display: flex;
-    flex-direction: column;
     flex: 1;
+    flex-direction: column;
+    min-width: 0;
+    height: auto;
+    padding: 24px;
 }
 
 .venue-info h3 {
-    font-size: 22px;
     margin-bottom: 7px;
+    font-size: 22px;
 }
 
 .venue-info p {
-    color: #6b7280;
     margin-bottom: 15px;
+    color: #6b7280;
 }
 
 .venue-meta {
     display: flex;
+    flex-wrap: wrap;
     gap: 18px;
     margin-bottom: 20px;
-    font-size: 14px;
     color: #4b5563;
+    font-size: 14px;
 }
-.venue-content {
+
+/* Venue Details */
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #4b5563;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.back-link:hover {
+    color: #16a34a;
+}
+
+.venue-detail-card {
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.venue-detail-image {
+    height: 300px;
+    font-size: 80px;
+}
+
+.venue-detail-content {
+    padding: 40px;
+}
+
+.venue-detail-content h1 {
+    margin: 10px 0;
+    font-size: 42px;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+}
+
+.venue-detail-content .venue-type {
+    color: #16a34a;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.venue-detail-content .venue-location {
+    margin-bottom: 25px;
+    color: #6b7280;
+    font-size: 16px;
+}
+
+.venue-description {
+    max-width: 800px;
+    margin-bottom: 30px;
+    color: #6b7280;
+    font-size: 17px;
+}
+
+.venue-detail-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    padding: 25px 0;
+    margin-bottom: 30px;
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.venue-detail-meta div {
     display: flex;
     flex-direction: column;
-    padding: 24px;
-    min-height: 300px;
+    gap: 5px;
 }
 
-.venue-footer {
-    margin-top: auto;
+.venue-detail-meta strong {
+    color: #111827;
+    font-size: 14px;
+}
+
+.venue-detail-meta span {
+    color: #6b7280;
+}
+
+.venue-actions {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
-.venue-footer .btn {
-    width: auto !important;
-    flex-shrink: 0;
-}
-/* =========================
-   GAMES
-========================= */
+/* Games */
 
 .game-list {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 18px;
 }
 
 .game-card {
     display: grid;
-    grid-template-columns: 1fr auto auto;
+    grid-template-columns: minmax(0, 1fr) auto auto;
     align-items: center;
     gap: 30px;
-    padding: 24px;
+    padding: 28px;
     background: #1f2937;
     border: 1px solid #374151;
-    border-radius: 12px;
+    border-radius: 14px;
 }
 
 .game-card h3 {
-    margin-bottom: 5px;
+    margin-bottom: 7px;
+    color: #fff;
+    font-size: 22px;
 }
 
 .game-card p {
+    margin-bottom: 3px;
     color: #9ca3af;
 }
 
 .game-card strong {
     display: block;
+    color: #fff;
     font-size: 22px;
     text-align: center;
 }
 
 .game-card span {
+    display: block;
     color: #9ca3af;
     font-size: 13px;
+    text-align: center;
 }
 
-
-/* =========================
-   ABOUT
-========================= */
+/* About */
 
 .about {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 70px;
     align-items: center;
+    gap: 70px;
 }
 
 .about p {
-    font-size: 19px;
     color: #6b7280;
+    font-size: 19px;
 }
 
+/* Forms */
 
-/* =========================
-   FOOTER
-========================= */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 22px;
+}
 
-.footer {
-    padding: 30px 0;
-    background: #030712;
-    color: #9ca3af;
-    text-align: center;
+.form-group label {
+    color: #374151;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-height: 48px;
+    padding: 13px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    outline: none;
+    background: #fff;
+    color: #111827;
+    font-family: inherit;
+    font-size: 15px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #16a34a;
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.12);
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+form .btn {
+    align-self: flex-start;
+    margin-top: 5px;
+}
+
+#login-message,
+#register-message,
+#reservation-message,
+#create-game-message {
+    margin-top: 15px;
+    color: #4b5563;
     font-size: 14px;
 }
 
+/* Create Game */
 
-/* =========================
-   RESPONSIVE
-========================= */
+.create-game-card {
+    width: 100%;
+    max-width: 850px;
+    height: auto;
+    min-height: 0;
+    padding: 32px;
+    overflow: visible;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
 
-@media (max-width: 850px) {
+.create-game-card h3 {
+    margin-bottom: 24px;
+    font-size: 24px;
+}
 
-    .nav-links {
-        display: none;
-    }
+.game-form {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
 
-.venue-grid {
+.form-row {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr;
     gap: 24px;
-    align-items: stretch;
 }
 
-    .about {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-
-    .game-card {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-
-    .game-card strong {
-        text-align: left;
-    }
-
-    .hero h1 {
-        letter-spacing: -2px;
-    }
+.game-form .form-group {
+    margin-bottom: 22px;
 }
 
-@media (max-width: 550px) {
-
-    .nav-actions .btn-outline {
-        display: none;
-    }
-
-    .hero {
-        min-height: 550px;
-    }
-
-    .hero h1 {
-        font-size: 48px;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .section {
-        padding: 70px 0;
-    }
-
-    .section-header h2,
-    .about h2 {
-        font-size: 34px;
-    }
+.game-form .form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
 }
-/* =========================
-   AUTH PAGES
-========================= */
 
-.auth-page {
-    min-height: 100vh;
-    background: #111827;
+/* Reservations */
+
+.reservations-card {
+    width: 100%;
+    max-width: 850px;
+    height: auto;
+    min-height: 0;
+    padding: 32px;
+    overflow: visible;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.reservations-card h3 {
+    margin-bottom: 24px;
+    font-size: 24px;
+}
+
+.reservations-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.reservations-card .form-group {
+    margin-bottom: 22px;
+}
+
+.reservations-card form > .btn {
+    align-self: flex-start;
+    margin-top: 5px;
+}
+
+.reservations-heading {
+    margin-top: 55px;
+    margin-bottom: 25px;
+}
+
+.empty-reservations {
+    padding: 28px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+}
+
+.empty-reservations h3 {
+    margin-bottom: 8px;
+    font-size: 21px;
+}
+
+.empty-reservations p {
+    color: #6b7280;
+}
+
+/* Profile */
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    align-items: start;
+    gap: 30px;
+}
+
+.profile-card {
+    padding: 30px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.profile-avatar {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: #16a34a;
+    color: #fff;
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.profile-card h2 {
+    margin-bottom: 8px;
+    font-size: 22px;
+}
+
+.profile-email {
+    margin-bottom: 6px;
+    color: #6b7280;
+}
+
+.profile-location {
+    margin-bottom: 25px;
+    color: #9ca3af;
+    font-size: 14px;
+}
+
+.profile-card .btn {
+    width: 100%;
+}
+
+.profile-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.profile-section {
+    padding: 28px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.profile-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.profile-section-header h2 {
+    font-size: 22px;
+}
+
+.profile-section-header a {
+    color: #16a34a;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.profile-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 18px 0;
+    border-top: 1px solid #e5e7eb;
+}
+
+.profile-item h3 {
+    margin-bottom: 5px;
+    font-size: 17px;
+}
+
+.profile-item p {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.profile-item > span {
+    color: #6b7280;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+/* Authentication */
+
+.auth-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
     padding: 40px 20px;
+    background: #111827;
 }
 
 .auth-container {
@@ -453,19 +723,19 @@ a {
 }
 
 .auth-card {
-    background: white;
-    border-radius: 16px;
     padding: 45px;
+    background: #fff;
+    border-radius: 16px;
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
 }
 
 .auth-logo {
     display: block;
-    text-align: center;
+    margin-bottom: 35px;
     font-size: 30px;
     font-weight: 800;
     letter-spacing: -1px;
-    margin-bottom: 35px;
+    text-align: center;
 }
 
 .auth-logo span {
@@ -473,14 +743,14 @@ a {
 }
 
 .auth-header {
-    text-align: center;
     margin-bottom: 30px;
+    text-align: center;
 }
 
 .auth-header h1 {
+    margin-bottom: 8px;
     font-size: 32px;
     letter-spacing: -1px;
-    margin-bottom: 8px;
 }
 
 .auth-header p {
@@ -494,43 +764,16 @@ a {
     gap: 20px;
 }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.form-group label {
-    font-size: 14px;
-    font-weight: 700;
-    color: #374151;
-}
-
 .form-label-row {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 }
 
 .forgot-password {
-    font-size: 13px;
     color: #16a34a;
+    font-size: 13px;
     font-weight: 600;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 13px 14px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    font-size: 15px;
-    outline: none;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.form-group input:focus {
-    border-color: #16a34a;
-    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.12);
 }
 
 .auth-button {
@@ -553,15 +796,15 @@ a {
 .auth-divider::before,
 .auth-divider::after {
     content: "";
+    flex: 1;
     height: 1px;
     background: #e5e7eb;
-    flex: 1;
 }
 
 .auth-register {
-    text-align: center;
     color: #6b7280;
     font-size: 14px;
+    text-align: center;
 }
 
 .auth-register a {
@@ -571,117 +814,72 @@ a {
 
 .back-home {
     display: block;
-    text-align: center;
     margin-top: 25px;
     color: #6b7280;
     font-size: 14px;
+    text-align: center;
 }
 
 .back-home:hover {
     color: #16a34a;
 }
 
-@media (max-width: 500px) {
+/* Footer */
 
-    .auth-card {
-        padding: 30px 22px;
+.footer {
+    padding: 30px 0;
+    background: #030712;
+    color: #9ca3af;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Responsive */
+
+@media (max-width: 1000px) {
+    .navbar-content {
+        gap: 18px;
     }
 
-    .auth-header h1 {
-        font-size: 28px;
+    .nav-links {
+        gap: 16px;
+    }
+
+    .venue-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .about {
+        gap: 35px;
     }
 }
-/* =========================
-   VENUE DETAILS
-========================= */
 
-.back-link {
-    display: inline-block;
-    margin-bottom: 20px;
-    color: #4b5563;
-    font-size: 15px;
-    font-weight: 600;
-}
+@media (max-width: 850px) {
+    .nav-links {
+        display: none;
+    }
 
-.back-link:hover {
-    color: #16a34a;
-}
+    .about {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
 
-.venue-detail-card {
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
+    .game-card {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
 
-.venue-detail-image {
-    height: 300px;
-    font-size: 80px;
-}
+    .game-card strong,
+    .game-card span {
+        text-align: left;
+    }
 
-.venue-detail-content {
-    padding: 40px;
-}
-
-.venue-detail-content h1 {
-    font-size: 42px;
-    line-height: 1.1;
-    letter-spacing: -1.5px;
-    margin: 10px 0;
-}
-
-.venue-detail-content .venue-type {
-    display: inline-block;
-    color: #16a34a;
-    font-size: 14px;
-    font-weight: 700;
-}
-
-.venue-detail-content .venue-location {
-    color: #6b7280;
-    font-size: 16px;
-    margin-bottom: 25px;
-}
-
-.venue-description {
-    max-width: 800px;
-    color: #6b7280;
-    font-size: 17px;
-    margin-bottom: 30px;
-}
-
-.venue-detail-meta {
-    display: flex;
-    gap: 50px;
-    padding: 25px 0;
-    border-top: 1px solid #e5e7eb;
-    border-bottom: 1px solid #e5e7eb;
-    margin-bottom: 30px;
-}
-
-.venue-detail-meta div {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.venue-detail-meta strong {
-    font-size: 14px;
-    color: #111827;
-}
-
-.venue-detail-meta span {
-    color: #6b7280;
-}
-
-.venue-actions {
-    display: flex;
-    gap: 12px;
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 700px) {
-
     .venue-detail-content {
         padding: 25px;
     }
@@ -703,125 +901,9 @@ a {
     .venue-actions .btn {
         width: 100%;
     }
-}
 
-/* =========================
-   GAMES
-========================= */
-
-.game-list {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-
-.game-card {
-    display: grid;
-    grid-template-columns: 1fr auto auto;
-    align-items: center;
-    gap: 30px;
-    padding: 28px;
-    background: #1f2937;
-    border: 1px solid #374151;
-    border-radius: 14px;
-}
-
-.game-card h3 {
-    color: #ffffff;
-    font-size: 22px;
-    margin-bottom: 7px;
-}
-
-.game-card p {
-    color: #9ca3af;
-    margin-bottom: 3px;
-}
-
-.game-card strong {
-    display: block;
-    color: #ffffff;
-    font-size: 22px;
-    text-align: center;
-}
-
-.game-card span {
-    display: block;
-    color: #9ca3af;
-    font-size: 13px;
-    text-align: center;
-}
-/* =========================
-   CREATE GAME
-========================= */
-
-.create-game-card {
-    max-width: 850px;
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 16px;
-    padding: 40px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
-
-.game-form {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-}
-
-.game-form .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.game-form label {
-    font-size: 14px;
-    font-weight: 700;
-    color: #374151;
-}
-
-.game-form input,
-.game-form select,
-.game-form textarea {
-    width: 100%;
-    padding: 13px 14px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    font-family: inherit;
-    font-size: 15px;
-    background: #ffffff;
-    color: #111827;
-    outline: none;
-}
-
-.game-form input:focus,
-.game-form select:focus,
-.game-form textarea:focus {
-    border-color: #16a34a;
-    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.12);
-}
-
-.game-form textarea {
-    resize: vertical;
-}
-
-.form-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 12px;
-    margin-top: 10px;
-}
-
-@media (max-width: 700px) {
-
-    .create-game-card {
+    .create-game-card,
+    .reservations-card {
         padding: 25px;
     }
 
@@ -830,262 +912,54 @@ a {
         gap: 20px;
     }
 
-    .form-actions {
-        flex-direction: column-reverse;
-    }
-
-    .form-actions .btn {
-        width: 100%;
-    }
-}
-.create-game-action {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 25px;
-}
-/* =========================
-   Reservations
-   ========================= */
-
-.reservations-card {
-    max-width: 850px;
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 16px;
-    padding: 40px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
-}
-
-.reservations-venue {
-    padding-bottom: 25px;
-    margin-bottom: 30px;
-    border-bottom: 1px solid #e5e7eb;
-}
-
-.reservations-venue .venue-type {
-    color: #16a34a;
-    font-size: 14px;
-    font-weight: 700;
-}
-
-.reservations-venue h2 {
-    font-size: 28px;
-    margin: 8px 0;
-}
-
-.reservations-venue p {
-    color: #6b7280;
-    margin-bottom: 12px;
-}
-
-.reservations-venue strong {
-    color: #111827;
-    font-size: 16px;
-}
-
-.reservations-form {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.reservations-form .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.reservations-form label {
-    font-size: 14px;
-    font-weight: 700;
-    color: #374151;
-}
-
-.reservations-form input,
-.reservations-form select,
-.reservations-form textarea {
-    width: 100%;
-    padding: 13px 14px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    font-family: inherit;
-    font-size: 15px;
-    background: #ffffff;
-    color: #111827;
-    outline: none;
-}
-
-.reservations-form input:focus,
-.reservations-form select:focus,
-.reservations-form textarea:focus {
-    border-color: #16a34a;
-    box-shadow: 0 0 0 3px rgba(22, 163, 74, .12);
-}
-
-.reservations-form textarea {
-    resize: vertical;
-}
-
-.reservations-summary {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
-    padding: 20px 0;
-    border-top: 1px solid #e5e7eb;
-    border-bottom: 1px solid #e5e7eb;
-}
-
-.reservations-summary div {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.reservations-summary span {
-    color: #6b7280;
-    font-size: 14px;
-}
-
-.reservations-summary strong {
-    color: #111827;
-    font-size: 16px;
-}
-
-@media (max-width: 700px) {
-
-    .reservations-card {
-        padding: 25px;
-    }
-
-    .reservations-summary {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-}
-/* =========================
-   Profile
-   ========================= */
-
-.profile-grid {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 30px;
-    align-items: start;
-}
-
-.profile-card {
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 16px;
-    padding: 30px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
-}
-
-.profile-avatar {
-    width: 90px;
-    height: 90px;
-    margin: 0 auto 20px;
-    border-radius: 50%;
-    background: #16a34a;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    font-weight: 800;
-}
-
-.profile-card h2 {
-    font-size: 22px;
-    margin-bottom: 8px;
-}
-
-.profile-email {
-    color: #6b7280;
-    margin-bottom: 6px;
-}
-
-.profile-location {
-    color: #9ca3af;
-    font-size: 14px;
-    margin-bottom: 25px;
-}
-
-.profile-card .btn {
-    width: 100%;
-}
-
-.profile-content {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.profile-section {
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 16px;
-    padding: 28px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
-}
-
-.profile-section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.profile-section-header h2 {
-    font-size: 22px;
-}
-
-.profile-section-header a {
-    color: #16a34a;
-    font-size: 14px;
-    font-weight: 700;
-}
-
-.profile-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    padding: 18px 0;
-    border-top: 1px solid #e5e7eb;
-}
-
-.profile-item h3 {
-    font-size: 17px;
-    margin-bottom: 5px;
-}
-
-.profile-item p {
-    color: #6b7280;
-    font-size: 14px;
-}
-
-.profile-item > span {
-    color: #6b7280;
-    font-size: 14px;
-    white-space: nowrap;
-}
-
-@media (max-width: 800px) {
-
-    .profile-grid {
-        grid-template-columns: 1fr;
-    }
-
-}
-
-@media (max-width: 600px) {
-
     .profile-item {
         flex-direction: column;
         align-items: flex-start;
     }
+}
 
+@media (max-width: 550px) {
+    .nav-actions .btn-outline {
+        display: none;
+    }
+
+    .hero {
+        min-height: 550px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+        letter-spacing: -2px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+
+    .section-header h2,
+    .about h2 {
+        font-size: 34px;
+    }
+
+    .venue-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .auth-card {
+        padding: 30px 22px;
+    }
+
+    .auth-header h1 {
+        font-size: 28px;
+    }
+
+    .reservations-card,
+    .create-game-card {
+        padding: 20px;
+    }
 }

@@ -1,104 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<section class="section">
 
-    <title>Register | Termin.ba</title>
+    <div class="container">
 
-    <link rel="stylesheet" href="../css/style.css">
-</head>
+        <div class="section-header">
+            <span class="section-label">JOIN TERMIN.BA</span>
 
-<body class="auth-page">
+            <h2>Create Your Account</h2>
 
-    <main class="auth-container">
+            <p>
+                Sign up to book football venues, create games
+                and connect with other players in Sarajevo.
+            </p>
+        </div>
 
-        <div class="auth-card">
+        <div class="venue-card">
 
-            <a href="../index.html" class="auth-logo">
-                Termin<span>.ba</span>
-            </a>
+            <div class="venue-info">
 
-            <div class="auth-header">
-                <h1>Create your account</h1>
+                <form id="register-form">
+
+                    <div class="form-group">
+                        <label for="register-name">Full Name</label>
+
+                        <input
+                            type="text"
+                            id="register-name"
+                            name="name"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="register-email">Email Address</label>
+
+                        <input
+                            type="email"
+                            id="register-email"
+                            name="email"
+                            placeholder="Enter your email"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="register-password">Password</label>
+
+                        <input
+                            type="password"
+                            id="register-password"
+                            name="password"
+                            placeholder="Create a password"
+                            autocomplete="new-password"
+                            minlength="8"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="register-confirm-password">
+                            Confirm Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="register-confirm-password"
+                            name="confirmPassword"
+                            placeholder="Confirm your password"
+                            autocomplete="new-password"
+                            minlength="8"
+                            required
+                        >
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        Create Account
+                    </button>
+
+                </form>
+
+                <p id="register-message" aria-live="polite"></p>
 
                 <p>
-                    Join Termin.ba and start booking your next game.
+                    Already have an account?
+                    <a href="#login">Log in here</a>
                 </p>
+
             </div>
-
-            <form class="auth-form" method="POST">
-
-                <div class="form-group">
-                    <label for="name">Full name</label>
-
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        placeholder="Your full name"
-                        required
-                    >
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email address</label>
-
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="you@example.com"
-                        required
-                    >
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Password</label>
-
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        placeholder="Create a password"
-                        required
-                    >
-                </div>
-
-                <div class="form-group">
-                    <label for="confirm-password">Confirm password</label>
-
-                    <input
-                        type="password"
-                        id="confirm-password"
-                        name="confirm-password"
-                        placeholder="Repeat your password"
-                        required
-                    >
-                </div>
-
-                <button type="submit" class="btn btn-primary auth-button">
-                    Create Account
-                </button>
-
-            </form>
-
-            <div class="auth-divider">
-                <span>OR</span>
-            </div>
-
-            <p class="auth-register">
-                Already have an account?
-                <a href="login.html">Log in</a>
-            </p>
-
-            <a href="../index.html" class="back-home">
-                ← Back to Termin.ba
-            </a>
 
         </div>
 
-    </main>
+    </div>
 
-</body>
-</html>
+</section>
