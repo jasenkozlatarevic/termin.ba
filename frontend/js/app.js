@@ -20,8 +20,15 @@ document.addEventListener("DOMContentLoaded", function () {
         about: "about.html"
     };
 
+    const venues = {
+        fis: { name: "FIS", rating: "⭐ 4.7", description: "Sportski teren u Sarajevu za rekreativne fudbalske utakmice." },
+        goran: { name: "Goran Čengić", rating: "⭐ 4.6", description: "Sportski teren Goran Čengić za rekreativne fudbalske utakmice." },
+        faris: { name: "Faris Pendek", rating: "⭐ 4.4", description: "Sportski teren Faris Pendek za rekreativne fudbalske utakmice." }
+    };
+
     // Keep track of views that have already been loaded
     const loadedViews = new Set();
+    let currentVenueId = "fis";
 
     // Load and display a selected view
     async function loadView(viewName) {
@@ -47,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Avoid loading the same HTML file more than once
         if (loadedViews.has(selectedView)) {
+            if (selectedView === "venue-details") renderVenueDetails(currentVenueId);
             return;
         }
 
@@ -61,6 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             targetSection.innerHTML = html;
             loadedViews.add(selectedView);
+            if (selectedView === "venue-details") renderVenueDetails(currentVenueId);
 
         } catch (error) {
             console.error("Error loading view:", error);
@@ -77,12 +86,42 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    function renderVenueDetails(venueId) {
+        const venue = venues[venueId] || venues.fis;
+        document.getElementById("venue-detail-heading").textContent = venue.name;
+        document.getElementById("venue-detail-name").textContent = venue.name;
+        document.getElementById("venue-detail-rating").textContent = venue.rating;
+        document.getElementById("venue-detail-description").textContent = venue.description;
+    }
+
+    const demoMessages = {
+        "login-form": "Demo verzija: prijava nije aktivna. Nemoj unositi stvarnu lozinku.",
+        "register-form": "Demo verzija: registracija nije aktivna. Podaci nisu poslani.",
+        "reservation-form": "Demo verzija: rezervacija nije aktivna. Podaci nisu poslani.",
+        "create-game-form": "Demo verzija: kreiranje utakmice nije aktivno. Podaci nisu poslani.",
+        "review-form": "Demo verzija: recenzija nije sačuvana. Podaci nisu poslani."
+    };
+
+    app.addEventListener("submit", function (event) {
+        const message = demoMessages[event.target.id];
+        if (!message) return;
+
+        event.preventDefault();
+        const messageId = event.target.id.replace("-form", "") + "-message";
+        const messageElement = document.getElementById(messageId);
+        if (messageElement) messageElement.textContent = message;
+    });
+
     // Handle navigation using the URL hash
     function navigate() {
-        const viewName = window.location.hash.substring(1);
+        const hash = window.location.hash.substring(1);
+        const venueMatch = hash.match(/^venue-details-(fis|goran|faris)$/);
 
-        if (views[viewName]) {
-            loadView(viewName);
+        if (venueMatch) {
+            currentVenueId = venueMatch[1];
+            loadView("venue-details");
+        } else if (views[hash]) {
+            loadView(hash);
         } else {
             loadView("home");
         }

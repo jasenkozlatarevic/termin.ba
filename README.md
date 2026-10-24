@@ -20,6 +20,8 @@ Users can:
 - User registration and login interface
 - Sports venue discovery
 - Venue details
+- Venue reviews (static prototype)
+- Planned weather forecast for each venue using Open-Meteo
 - Reservation form
 - Game creation form
 - Existing games listing
@@ -90,6 +92,8 @@ termin.ba/
 Milestone 1 focuses on the initial project structure, static frontend views, SPA navigation, and database schema planning.
 
 The frontend currently uses sample content. Authentication, reservations, and game management are not yet connected to a backend or database.
+
+The planned external API feature is a weather forecast shown on each venue's detail page. The frontend currently marks its location; API integration will be implemented in a later milestone through the backend.
 
 ## Running the Frontend
 
