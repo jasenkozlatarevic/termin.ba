@@ -23,7 +23,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const venues = {
         fis: { name: "FIS", rating: "⭐ 4.7", description: "Sportski teren u Sarajevu za rekreativne fudbalske utakmice." },
         goran: { name: "Goran Čengić", rating: "⭐ 4.6", description: "Sportski teren Goran Čengić za rekreativne fudbalske utakmice." },
-        faris: { name: "Faris Pendek", rating: "⭐ 4.4", description: "Sportski teren Faris Pendek za rekreativne fudbalske utakmice." }
+        faris: { name: "TC Arena", rating: "⭐ 4.4", description: "Sportski teren TC Arena za rekreativne fudbalske utakmice." }
+    };
+
+    const venueImages = {
+        fis: "static/fis-venue.jpg",
+        goran: "static/goran-cengic-venue.webp",
+        faris: "static/tc-arena-venue.jpg"
     };
 
     // Keep track of views that have already been loaded
@@ -88,6 +94,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function renderVenueDetails(venueId) {
         const venue = venues[venueId] || venues.fis;
+        const venueImage = document.getElementById("venue-detail-image");
+        const imagePath = venueImages[venueId] || venueImages.fis;
+        venueImage.src = imagePath;
+        venueImage.alt = `Sportski teren ${venue.name} u Sarajevu`;
         document.getElementById("venue-detail-heading").textContent = venue.name;
         document.getElementById("venue-detail-name").textContent = venue.name;
         document.getElementById("venue-detail-rating").textContent = venue.rating;
