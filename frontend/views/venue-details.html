@@ -5,7 +5,7 @@
         <div class="section-header">
             <span class="section-label">VENUE DETAILS</span>
 
-            <h2>FIS Football Venue</h2>
+            <h2 id="venue-detail-heading">Venue Details</h2>
 
             <p>
                 Everything you need to know before booking
@@ -19,25 +19,21 @@
             <article class="venue-card">
 
                 <div class="venue-image">
-                    <span>⚽</span>
+                    <img id="venue-detail-image" src="static/fis-venue.jpg" alt="Nogometni teren FIS-a u Sarajevu">
                 </div>
 
                 <div class="venue-info">
 
-                    <h3>FIS</h3>
+                    <h3 id="venue-detail-name">Venue</h3>
 
-                    <p>📍 Sarajevo, Bosnia and Herzegovina</p>
+                    <p id="venue-detail-location">Sarajevo, Bosnia and Herzegovina</p>
 
                     <div class="venue-meta">
-                        <span>⭐ 4.7</span>
-                        <span>⚽ Football</span>
+                        <span id="venue-detail-rating">⭐ 4.7</span>
+                        <span id="venue-detail-sport">⚽ Football</span>
                     </div>
 
-                    <p>
-                        A sports venue where football players
-                        can organize games and enjoy playing
-                        with friends.
-                    </p>
+                    <p id="venue-detail-description"></p>
 
                     <p><strong>Opening hours:</strong> To be confirmed</p>
 
@@ -52,6 +48,38 @@
             </article>
 
         </div>
+
+        <aside class="venue-weather" aria-labelledby="weather-heading">
+            <h2 id="weather-heading">Vrijeme za termin</h2>
+            <p>Planirana funkcija: prognoza vremena za lokaciju terena, prikazana uz detalje terena. Podaci će se dohvatati preko Open-Meteo API-ja.</p>
+        </aside>
+
+        <section class="venue-reviews" aria-labelledby="reviews-heading">
+            <h2 id="reviews-heading">Recenzije terena</h2>
+            <article class="review-item">
+                <h3>Primjer recenzije · ⭐⭐⭐⭐⭐</h3>
+                <p>Uredan teren i dobra lokacija. (Primjer statičnog sadržaja.)</p>
+            </article>
+            <form id="review-form">
+                <div class="form-group">
+                    <label for="review-rating">Ocjena</label>
+                    <select id="review-rating" name="rating" required>
+                        <option value="">Odaberi ocjenu</option>
+                        <option value="5">5 – Odlično</option>
+                        <option value="4">4 – Vrlo dobro</option>
+                        <option value="3">3 – Dobro</option>
+                        <option value="2">2 – Slabo</option>
+                        <option value="1">1 – Loše</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="review-comment">Komentar</label>
+                    <textarea id="review-comment" name="comment" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Pošalji recenziju</button>
+                <p id="review-message" aria-live="polite"></p>
+            </form>
+        </section>
 
         <div class="hero-buttons">
 

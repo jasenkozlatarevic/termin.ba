@@ -74,3 +74,24 @@ termin.ba/
 - Do not store passwords or secrets directly in the source code.
 - Do not commit sensitive configuration files or log files.
 - Keep the code organized and easy to maintain.
+## Database and DAO Guidelines
+
+- Use PDO for all database operations.
+- Use prepared statements for queries that accept user-provided values.
+- Reuse the `BaseDao` class for common CRUD operations.
+- Each entity should have its own DAO class extending `BaseDao`.
+- Keep database connection settings in a local configuration file.
+- Use `backend/config/config.example.php` as the template for local database configuration.
+- Never commit `backend/config/config.php` or other files containing credentials.
+- Maintain primary keys, foreign keys, and appropriate database constraints.
+- Keep the database schema and ERD documentation synchronized with the SQL implementation.
+- Include representative sample data in the database export.
+- Test database connectivity and CRUD operations before submitting a milestone.
+
+## Documentation and Testing
+
+- Keep `README.md` updated with project setup and execution instructions.
+- Update `docs/AI_LOG.md` to document AI assistance, important prompts, and examples of AI mistakes or corrections.
+- Keep documentation consistent with the actual implementation.
+- Run PHP syntax checks and relevant database tests before submitting changes.
+- Submit each milestone on its designated Git branch and follow the repository's pull request and review requirements.

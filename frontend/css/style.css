@@ -137,11 +137,9 @@ textarea {
     min-height: 620px;
     display: flex;
     align-items: center;
-    background: linear-gradient(
-        120deg,
-        rgba(17, 24, 39, 0.96),
-        rgba(17, 24, 39, 0.80)
-    );
+    background:
+        linear-gradient(90deg, rgba(3, 12, 10, 0.78) 0%, rgba(3, 12, 10, 0.42) 48%, rgba(3, 12, 10, 0.08) 100%),
+        url("../static/hero-background.png") center / cover no-repeat;
     color: #fff;
 }
 
@@ -262,6 +260,12 @@ textarea {
     justify-content: center;
     background: #e5e7eb;
     font-size: 50px;
+}
+
+.venue-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .venue-info {
@@ -855,8 +859,20 @@ form .btn {
 }
 
 @media (max-width: 850px) {
+    .navbar-content {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding-top: 12px;
+    }
+
     .nav-links {
-        display: none;
+        order: 3;
+        display: flex;
+        flex: 0 0 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px 18px;
+        padding: 0 0 12px;
     }
 
     .about {
@@ -877,6 +893,30 @@ form .btn {
     .profile-grid {
         grid-template-columns: 1fr;
     }
+}
+
+.venue-weather,
+.venue-reviews {
+    margin-top: 35px;
+    padding: 28px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+}
+
+.venue-weather p,
+.review-item p {
+    color: #6b7280;
+}
+
+.review-item {
+    padding: 18px 0;
+    border-top: 1px solid #e5e7eb;
+}
+
+.review-item h3 {
+    margin-bottom: 5px;
+    font-size: 17px;
 }
 
 @media (max-width: 700px) {

@@ -4,42 +4,46 @@ A web platform for booking football venues in Sarajevo and finding players to jo
 
 ## Project Description
 
-Termin.ba is designed to make organizing recreational football activities easier by connecting players with sports venues and other players in Sarajevo.
+Termin.ba helps users organize recreational football activities by connecting players with sports venues and other players in Sarajevo.
 
 Users can:
-- Discover football venues in Sarajevo
-- View venue details
-- Request venue reservations
-- Create football games
-- Join existing games
-- Manage their profile
-- View their games and reservations
+- Discover sports venues and view venue details.
+- Make venue reservations.
+- Create games and join existing games.
+- Manage their profiles.
+- Review sports venues.
 
 ## Main Features
 
-- User registration and login interface
-- Sports venue discovery
-- Venue details
-- Reservation form
-- Game creation form
-- Existing games listing
-- User profile interface
-- Single-page application navigation
-- Responsive web interface
+- Responsive single-page application.
+- Venue discovery and details.
+- Registration and login interfaces.
+- Reservation and game creation forms.
+- Existing games listing.
+- User profile interface.
+- Database schema and sample data.
+- PHP DAO layer with CRUD operations.
+- Planned weather forecast integration using Open-Meteo.
 
 ## Technologies
 
-### Frontend
-- HTML5
-- CSS3
-- JavaScript
+**Frontend**
+- HTML5, CSS3, JavaScript
 - Fetch API
 - Hash-based navigation
 
-### Development Tools
+**Backend and Database**
+- PHP
+- MySQL
+- PDO
+- DAO architecture
+- FlightPHP and OpenAPI planned for API implementation
+
+**Development Tools**
 - Visual Studio Code
-- Git
-- GitHub
+- XAMPP
+- DBeaver
+- Git and GitHub
 - Live Server
 
 ## Project Structure
@@ -48,53 +52,90 @@ Users can:
 termin.ba/
 ├── backend/
 │   ├── config/
-│   │   └── .gitkeep
 │   ├── dao/
-│   │   └── .gitkeep
 │   ├── logs/
-│   │   └── .gitkeep
 │   ├── middleware/
-│   │   └── .gitkeep
 │   ├── routes/
-│   │   └── .gitkeep
 │   └── services/
-│       └── .gitkeep
+├── database/
+│   └── termin.sql
 ├── docs/
+│   ├── AI_LOG.md
 │   ├── database-schema.md
 │   └── ERD.png
 ├── frontend/
 │   ├── css/
-│   │   └── style.css
 │   ├── js/
-│   │   └── app.js
 │   ├── static/
 │   ├── views/
-│   │   ├── about.html
-│   │   ├── create-game.html
-│   │   ├── games.html
-│   │   ├── home.html
-│   │   ├── login.html
-│   │   ├── profile.html
-│   │   ├── register.html
-│   │   ├── reservations.html
-│   │   ├── venue-details.html
-│   │   └── venues.html
 │   └── index.html
 ├── AGENTS.md
 ├── README.md
 └── .gitignore
 ```
 
-## Current Project Status
+## Database
 
-Milestone 1 focuses on the initial project structure, static frontend views, SPA navigation, and database schema planning.
+The MySQL database is named `termin_ba` and contains six entities:
 
-The frontend currently uses sample content. Authentication, reservations, and game management are not yet connected to a backend or database.
+- `users`
+- `venues`
+- `games`
+- `reservations`
+- `game_participants`
+- `reviews`
 
-## Running the Frontend
+The schema includes primary keys, foreign keys, unique constraints, and validation constraints. Sample data is included in `database/termin.sql`.
 
-1. Clone or download the repository.
-2. Open the project in Visual Studio Code.
-3. Open `frontend/index.html`.
-4. Start the page using the Live Server extension.
-5. Navigate through the application using the navigation menu.
+## Local Setup
+
+### 1. Start the database
+
+Start MySQL through XAMPP.
+
+### 2. Import the database
+
+Import `database/termin.sql` using DBeaver or another MySQL client.
+
+**Note:** The SQL script drops and recreates the project tables. Back up any data you need before running it again.
+
+### 3. Configure the backend
+
+Copy `backend/config/config.example.php` to `backend/config/config.php` and update the database credentials for your local environment.
+
+The local `config.php` file must not be committed to Git.
+
+### 4. Test the database connection
+
+From the project root, run:
+
+```bash
+php backend/test-connection.php
+```
+
+### 5. Test the DAO layer
+
+Run:
+
+```bash
+php backend/test-dao.php
+php backend/test-crud.php
+```
+
+### 6. Run the frontend
+
+Open `frontend/index.html` in Visual Studio Code and launch it using the Live Server extension.
+
+## Current Status
+
+Milestone 1 established the project structure and frontend prototype. Milestone 2 adds the MySQL schema, sample data, PDO connection configuration, and DAO classes with CRUD operations.
+
+The frontend is still a prototype, and the backend API integration is planned for a later milestone.
+
+## Future Improvements
+
+- REST API endpoints using FlightPHP.
+- API documentation with OpenAPI/Swagger.
+- Authentication and authorization using JWT.
+- Backend integration for reservations and games.
+- Weather forecast integration using Open-Meteo.
