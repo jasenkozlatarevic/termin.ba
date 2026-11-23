@@ -1,0 +1,18 @@
+{
+    "name": "termin-ba/backend",
+    "description": "Backend REST API for Termin.ba",
+    "type": "project",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Jasenko Zlatarević",
+            "email": "jasenko.zlatarevic@stu.ibu.edu.ba"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "mikecao/flight": "^3.19",
+        "zircote/swagger-php": "6.20",
+        "doctrine/annotations": "^2.0"
+    }
+}
