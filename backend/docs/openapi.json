@@ -1,0 +1,1397 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Termin.ba API",
+        "description": "REST API documentation for Termin.ba application",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "Local development server"
+        }
+    ],
+    "paths": {
+        "/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get all users",
+                "operationId": "64e21af65741b3588a907f5c8f8083fd",
+                "responses": {
+                    "200": {
+                        "description": "List of users",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Create a user",
+                "operationId": "11f8d48255518b92390f782564e268a8",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "full_name",
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "full_name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "User created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "success"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "User created successfully."
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/User"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/users/{id}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get user by ID",
+                "operationId": "8ddad5c9c5f549de30bfeca2a653d515",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Update a user",
+                "operationId": "5ce6e99535b4c51b5067db100cb13c8f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "full_name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User updated"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Delete a user",
+                "operationId": "978c0c5d2530dfdb4bba6202ec477c5a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User deleted"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        },
+        "/venues": {
+            "get": {
+                "tags": [
+                    "Venues"
+                ],
+                "summary": "Get all venues",
+                "operationId": "37636c0726a07fea2a1b40859139b6ff",
+                "responses": {
+                    "200": {
+                        "description": "List of venues"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Venues"
+                ],
+                "summary": "Create a venue",
+                "operationId": "00e423753ab8a77c861479d380c8ede9",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "location",
+                                    "sport",
+                                    "price_per_hour"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "location": {
+                                        "type": "string"
+                                    },
+                                    "sport": {
+                                        "type": "string"
+                                    },
+                                    "price_per_hour": {
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Venue created"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/venues/{id}": {
+            "get": {
+                "tags": [
+                    "Venues"
+                ],
+                "summary": "Get venue by ID",
+                "operationId": "da8e0bca901f0e46d655eb48178c416a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Venue found"
+                    },
+                    "404": {
+                        "description": "Venue not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Venues"
+                ],
+                "summary": "Update a venue",
+                "operationId": "548d90eedfba3c978a40a956041f2f54",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "location": {
+                                        "type": "string"
+                                    },
+                                    "sport": {
+                                        "type": "string"
+                                    },
+                                    "price_per_hour": {
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Venue updated"
+                    },
+                    "404": {
+                        "description": "Venue not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Venues"
+                ],
+                "summary": "Delete a venue",
+                "operationId": "6124f7cf68dd434a7996c810d6a7472e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Venue deleted"
+                    },
+                    "404": {
+                        "description": "Venue not found"
+                    }
+                }
+            }
+        },
+        "/venues/location/{location}": {
+            "get": {
+                "tags": [
+                    "Venues"
+                ],
+                "summary": "Get venues by location",
+                "operationId": "c5ac1c511fa34130bd961ccc007f3761",
+                "parameters": [
+                    {
+                        "name": "location",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Venues found"
+                    }
+                }
+            }
+        },
+        "/games": {
+            "get": {
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Get all games",
+                "operationId": "68c965d14aac49219918c21cf07fa93c",
+                "responses": {
+                    "200": {
+                        "description": "List of games"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Create a game",
+                "operationId": "82f078acb397c1db2b3099d081498097",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "creator_id",
+                                    "venue_id",
+                                    "game_name",
+                                    "game_date",
+                                    "game_time",
+                                    "max_players"
+                                ],
+                                "properties": {
+                                    "creator_id": {
+                                        "type": "integer"
+                                    },
+                                    "venue_id": {
+                                        "type": "integer"
+                                    },
+                                    "game_name": {
+                                        "type": "string"
+                                    },
+                                    "game_date": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "game_time": {
+                                        "type": "string"
+                                    },
+                                    "max_players": {
+                                        "type": "integer"
+                                    },
+                                    "skill_level": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Game created"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/games/{id}": {
+            "get": {
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Get game by ID",
+                "operationId": "bb6dd452ec01c1985f52bc895871339d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Game found"
+                    },
+                    "404": {
+                        "description": "Game not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Update a game",
+                "operationId": "b44c02f6edc05acc65095f34f9583328",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "creator_id": {
+                                        "type": "integer"
+                                    },
+                                    "venue_id": {
+                                        "type": "integer"
+                                    },
+                                    "game_name": {
+                                        "type": "string"
+                                    },
+                                    "game_date": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "game_time": {
+                                        "type": "string"
+                                    },
+                                    "max_players": {
+                                        "type": "integer"
+                                    },
+                                    "skill_level": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Game updated"
+                    },
+                    "404": {
+                        "description": "Game not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Delete a game",
+                "operationId": "6a07d5b57937490b45b9a1f51d036704",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Game deleted"
+                    },
+                    "404": {
+                        "description": "Game not found"
+                    }
+                }
+            }
+        },
+        "/games/venue/{venue_id}": {
+            "get": {
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Get games by venue ID",
+                "operationId": "3cdb86734b1c5f57db617242cc226dec",
+                "parameters": [
+                    {
+                        "name": "venue_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Games found"
+                    }
+                }
+            }
+        },
+        "/games/creator/{creator_id}": {
+            "get": {
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Get games by creator ID",
+                "operationId": "8c74173c5835f71d0e95ca1be8e2904d",
+                "parameters": [
+                    {
+                        "name": "creator_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Games found"
+                    }
+                }
+            }
+        },
+        "/reservations": {
+            "get": {
+                "tags": [
+                    "Reservations"
+                ],
+                "summary": "Get all reservations",
+                "operationId": "a583efddb3f27777fc2001a04f493e65",
+                "responses": {
+                    "200": {
+                        "description": "List of reservations"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Reservations"
+                ],
+                "summary": "Create a reservation",
+                "operationId": "6d729285bf0837d09ce632b475b69543",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "user_id",
+                                    "venue_id",
+                                    "reservation_date",
+                                    "start_time",
+                                    "end_time",
+                                    "number_of_players"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer"
+                                    },
+                                    "venue_id": {
+                                        "type": "integer"
+                                    },
+                                    "reservation_date": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "start_time": {
+                                        "type": "string"
+                                    },
+                                    "end_time": {
+                                        "type": "string"
+                                    },
+                                    "number_of_players": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Reservation created"
+                    },
+                    "400": {
+                        "description": "Invalid input or overlapping reservation"
+                    }
+                }
+            }
+        },
+        "/reservations/{id}": {
+            "get": {
+                "tags": [
+                    "Reservations"
+                ],
+                "summary": "Get reservation by ID",
+                "operationId": "fc91d36478b126478d24a4d48b757ac0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Reservation found"
+                    },
+                    "404": {
+                        "description": "Reservation not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Reservations"
+                ],
+                "summary": "Update a reservation",
+                "operationId": "74ad9ad78eddccfb28c384433f51f2e9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer"
+                                    },
+                                    "venue_id": {
+                                        "type": "integer"
+                                    },
+                                    "reservation_date": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "start_time": {
+                                        "type": "string"
+                                    },
+                                    "end_time": {
+                                        "type": "string"
+                                    },
+                                    "number_of_players": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Reservation updated"
+                    },
+                    "404": {
+                        "description": "Reservation not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Reservations"
+                ],
+                "summary": "Delete a reservation",
+                "operationId": "646add2099841f7b1eb9d3fc9c8d691a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Reservation deleted"
+                    },
+                    "404": {
+                        "description": "Reservation not found"
+                    }
+                }
+            }
+        },
+        "/reservations/user/{user_id}": {
+            "get": {
+                "tags": [
+                    "Reservations"
+                ],
+                "summary": "Get reservations by user ID",
+                "operationId": "6f9d35142b7fd7f1c2855e40f3d54ef7",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Reservations found"
+                    }
+                }
+            }
+        },
+        "/reservations/venue/{venue_id}": {
+            "get": {
+                "tags": [
+                    "Reservations"
+                ],
+                "summary": "Get reservations by venue ID",
+                "operationId": "9145894af7cd55795a0064a17d74d3fc",
+                "parameters": [
+                    {
+                        "name": "venue_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Reservations found"
+                    }
+                }
+            }
+        },
+        "/game-participants": {
+            "get": {
+                "tags": [
+                    "Game Participants"
+                ],
+                "summary": "Get all game participants",
+                "operationId": "342ca6516a6c233bcf356d0b9c6921f6",
+                "responses": {
+                    "200": {
+                        "description": "List of game participants"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Game Participants"
+                ],
+                "summary": "Add a participant to a game",
+                "operationId": "9cef51b427a3de08792db9da565b9951",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "game_id",
+                                    "user_id"
+                                ],
+                                "properties": {
+                                    "game_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Participant added"
+                    },
+                    "400": {
+                        "description": "Invalid input or duplicate participant"
+                    }
+                }
+            }
+        },
+        "/game-participants/{id}": {
+            "get": {
+                "tags": [
+                    "Game Participants"
+                ],
+                "summary": "Get participant by ID",
+                "operationId": "08901f955824713371aa3dddf3c61ab5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Participant found"
+                    },
+                    "404": {
+                        "description": "Participant not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Game Participants"
+                ],
+                "summary": "Update a game participant",
+                "operationId": "57e095e41fa01504b771b0abf76af0fe",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "game_id": {
+                                        "type": "integer"
+                                    },
+                                    "user_id": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Participant updated"
+                    },
+                    "404": {
+                        "description": "Participant not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Game Participants"
+                ],
+                "summary": "Remove a participant",
+                "operationId": "3d719e9ac3f28b199bbb3dcc3859d843",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Participant removed"
+                    },
+                    "404": {
+                        "description": "Participant not found"
+                    }
+                }
+            }
+        },
+        "/game-participants/game/{game_id}": {
+            "get": {
+                "tags": [
+                    "Game Participants"
+                ],
+                "summary": "Get participants by game ID",
+                "operationId": "f854d92450076afe5cf05a000839b1c1",
+                "parameters": [
+                    {
+                        "name": "game_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Participants found"
+                    }
+                }
+            }
+        },
+        "/game-participants/user/{user_id}": {
+            "get": {
+                "tags": [
+                    "Game Participants"
+                ],
+                "summary": "Get participants by user ID",
+                "operationId": "ea1b684ecbd1054f91b4eafba94f6f93",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Participants found"
+                    }
+                }
+            }
+        },
+        "/reviews": {
+            "get": {
+                "tags": [
+                    "Reviews"
+                ],
+                "summary": "Get all reviews",
+                "operationId": "c5f47ca4c18265f8fffec015f14eef59",
+                "responses": {
+                    "200": {
+                        "description": "List of reviews"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Reviews"
+                ],
+                "summary": "Create a review",
+                "operationId": "06e27f7cc43db1e24ef4b6bf9615688f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "user_id",
+                                    "venue_id",
+                                    "rating"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "venue_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "rating": {
+                                        "type": "integer",
+                                        "example": 5,
+                                        "maximum": 5,
+                                        "minimum": 1
+                                    },
+                                    "comment": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Review created"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/reviews/{id}": {
+            "get": {
+                "tags": [
+                    "Reviews"
+                ],
+                "summary": "Get review by ID",
+                "operationId": "5a3d7c5ec145660d0e5dfd100d3cc2ae",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Review found"
+                    },
+                    "404": {
+                        "description": "Review not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Reviews"
+                ],
+                "summary": "Update a review",
+                "operationId": "3cd8d1f3a78ce8d257f0291333c65c52",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer"
+                                    },
+                                    "venue_id": {
+                                        "type": "integer"
+                                    },
+                                    "rating": {
+                                        "type": "integer",
+                                        "maximum": 5,
+                                        "minimum": 1
+                                    },
+                                    "comment": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Review updated"
+                    },
+                    "404": {
+                        "description": "Review not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Reviews"
+                ],
+                "summary": "Delete a review",
+                "operationId": "ad3dd926d149f9116d97c728fa92cbc3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Review deleted"
+                    },
+                    "404": {
+                        "description": "Review not found"
+                    }
+                }
+            }
+        },
+        "/reviews/venue/{venue_id}": {
+            "get": {
+                "tags": [
+                    "Reviews"
+                ],
+                "summary": "Get reviews by venue ID",
+                "operationId": "689e803f7dc10273bed315e0e88ca91c",
+                "parameters": [
+                    {
+                        "name": "venue_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Reviews found"
+                    }
+                }
+            }
+        },
+        "/reviews/user/{user_id}": {
+            "get": {
+                "tags": [
+                    "Reviews"
+                ],
+                "summary": "Get reviews by user ID",
+                "operationId": "486f2da7ebdd6cb51c2033bc35c38001",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Reviews found"
+                    }
+                }
+            }
+        },
+        "/weather": {
+            "get": {
+                "tags": [
+                    "Weather"
+                ],
+                "summary": "Get current weather for a city",
+                "description": "Fetches current weather data from the OpenWeather API.",
+                "operationId": "2f7d29124c34086ae6a384846d3b871c",
+                "parameters": [
+                    {
+                        "name": "city",
+                        "in": "query",
+                        "description": "City name, for example Sarajevo",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "Sarajevo"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Weather data retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "city": {
+                                            "type": "string",
+                                            "example": "Sarajevo"
+                                        },
+                                        "country": {
+                                            "type": "string",
+                                            "example": "BA"
+                                        },
+                                        "temperature": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "example": 18.5
+                                        },
+                                        "feels_like": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "example": 18.1
+                                        },
+                                        "humidity": {
+                                            "type": "integer",
+                                            "example": 65
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "example": "clear sky"
+                                        },
+                                        "icon": {
+                                            "type": "string",
+                                            "example": "01d"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "City parameter is missing or invalid"
+                    },
+                    "502": {
+                        "description": "Weather service is currently unavailable"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "User": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 9
+                    },
+                    "full_name": {
+                        "type": "string",
+                        "example": "Swagger Test"
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "example": "swagger.test@example.com"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "example": "2026-11-22 20:00:00"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Users"
+        },
+        {
+            "name": "Venues"
+        },
+        {
+            "name": "Games"
+        },
+        {
+            "name": "Reservations"
+        },
+        {
+            "name": "Game Participants"
+        },
+        {
+            "name": "Reviews"
+        },
+        {
+            "name": "Weather"
+        }
+    ]
+}
